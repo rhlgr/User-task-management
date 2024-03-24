@@ -1,0 +1,54 @@
+<%- include('header')%>
+<%- include('nav')%>
+     
+<div class="main w-75 my-5">
+
+<form action="/task" class="w-50 m-auto" method="post">
+  <select name="user" class="form-control w-25" id="cars" >
+    <option value="" selected hidden disable>Select User ></option>
+    <%user.forEach((data)=>{%>
+      <option value="<%=data.name%>"><%=data.name%></option>
+    <%})%>
+  </select>
+    <input class="form-control  my-3" type="text" name="name" placeholder="task name">
+    <input  type="radio"  value="done" name="type" >
+    <label for="">Done</label>
+    <br>
+    <input type="radio"  value="pending" name="type" >
+    <label for="">Pending</label>
+    <br>     
+            
+<hr>
+
+<div class="d-flex justify-content-between  "> 
+  <button class="btn btn-success ">Add Task</button>
+  <a class="btn btn-warning text-decoration-none"  href="/get">Get excel data here!</a></div>
+         </form>
+         <hr class="w-50 m-auto mt-5">
+
+         <div class="d-flex justify-content-between m-auto w-50 container mt-5 ">
+        
+          <div class="card" style="width: 18rem;">
+            <div class="header">
+            <h2 class="mx-3">Task details</h2>
+            </div>
+            <div class="box d-flex">
+              <div class="task">
+                <h4 class="m-3 "> Tasks-Users</h4>
+            <ul class="list-group list-group-flush ">
+              
+              <% task.forEach((task)=>{%>
+                <li  class="my-2 list-group-item"> <a href="/task/<%= task.name%>" class=" text-decoration-none text-dark"><%= task.taskName%>-&nbsp;&nbsp;<%= task.user%></a></li>
+                 <%})%>
+            </ul>
+          </div>
+          
+          </div>
+          </div>
+        </div>
+
+
+     </div>
+
+     
+<%- include('footer')%>
